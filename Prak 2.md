@@ -703,30 +703,31 @@
          become_user: root
          become_method: su
          action: service name=nginx state=restarted
-  ![12](https://user-images.githubusercontent.com/78127403/144534036-f8a9cf33-414b-49bd-975e-e7148d97c863.jpg)
+        
+      ![12](https://user-images.githubusercontent.com/78127403/144534036-f8a9cf33-414b-49bd-975e-e7148d97c863.jpg)
 
-  - name: restart php
-  become: yes
-  become_user: root
-  become_method: su
-  action: service name=php7.4-fpm state=restarted
-  ```
-  ![A1](asset/47.png)
-- Jalankan
-  ```
-  cd ~/ansible/modul2-ansible
-  ansible-playbook -i hosts deploy-wp.yml -k
-  ```
-  ![A1](asset/48.png)
-- Hasil
+       - name: restart php
+         become: yes
+         become_user: root
+         become_method: su
+         action: service name=php7.4-fpm state=restarted
+      ```
+  
+    - Jalankan
+      ```
+      cd ~/ansible/modul2-ansible
+      ansible-playbook -i hosts deploy-wp.yml -k
+      ```
+  
+    - Hasil
 
-  ![15](https://user-images.githubusercontent.com/78127403/144534082-507b443d-df88-4b31-a7d2-9299ba72283b.jpg)
+      ![15](https://user-images.githubusercontent.com/78127403/144534082-507b443d-df88-4b31-a7d2-9299ba72283b.jpg)
 
-  ![16](https://user-images.githubusercontent.com/78127403/144534086-3b74f634-298e-4d05-a7fe-24ca75268791.jpg)
+      ![16](https://user-images.githubusercontent.com/78127403/144534086-3b74f634-298e-4d05-a7fe-24ca75268791.jpg)
 
-  ![17](https://user-images.githubusercontent.com/78127403/144534089-e3db5d7c-531e-408a-a6f2-d2842da98aa1.jpg)
+      ![17](https://user-images.githubusercontent.com/78127403/144534089-e3db5d7c-531e-408a-a6f2-d2842da98aa1.jpg)
 
-   ![18](https://user-images.githubusercontent.com/78127403/144534092-a379200b-311a-4f5a-91e5-405ae569954f.jpg)
+      ![18](https://user-images.githubusercontent.com/78127403/144534092-a379200b-311a-4f5a-91e5-405ae569954f.jpg)
 
    
 
