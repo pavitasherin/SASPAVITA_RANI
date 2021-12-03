@@ -718,7 +718,10 @@
       cd ~/ansible/modul2-ansible
       ansible-playbook -i hosts deploy-wp.yml -k
       ```
-  
+      ![13](https://user-images.githubusercontent.com/78127403/144590936-b37ce412-eb59-4f16-b272-b9ba73171e34.jpg)
+
+      ![14](https://user-images.githubusercontent.com/78127403/144590944-897e5133-c33c-471f-99de-b8ff05888dab.jpg)
+
     - Hasil
 
       ![15](https://user-images.githubusercontent.com/78127403/144534082-507b443d-df88-4b31-a7d2-9299ba72283b.jpg)
