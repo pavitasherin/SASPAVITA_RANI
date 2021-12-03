@@ -348,7 +348,7 @@
       define( 'DB_USER', 'admin' );
 
       /** MySQL database password */
-      define( 'DB_PASSWORD', 'chintya' );
+      define( 'DB_PASSWORD', 'SysAdminSas0102' );
 
       /** MySQL hostname */
       define( 'DB_HOST', '10.0.3.200:3306' );
@@ -497,7 +497,7 @@
 
 **Soal Tambahan**
 
-- buat file ubah-socket.yml
+- Buat file ubah-socket.yml
   ```
   - hosts: landing
     tasks:
@@ -518,7 +518,7 @@
       become_method: su
       action: service name=nginx state=restarted
   ```
-- buat file ubah-socket-php7.yml
+- Buat file ubah-socket-php7.yml
   ```
   - hosts: php7
     tasks:
