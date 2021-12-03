@@ -427,6 +427,286 @@
 
 
 4. **vm.local/blog**
+   - Edit deploy-wp
+  ```
+  cd ~/ansible/modul2-ansible
+  nano deploy-wp.yml
+  ```
+  ![A1](asset/45.png)
+- Buat roles wp
+  ```
+  mkdir -p roles/wp
+  mkdir -p roles/wp/handlers
+  mkdir -p roles/wp/tasks
+  mkdir -p roles/wp/templates
+  ```
+  ![A1](asset/46.png)
+- Isi pada /tasks/main.yml
+  ```
+  ---
+  - name: delete apt chache
+    become: yes
+    become_user: root
+    become_method: su
+    command: rm -vf /var/lib/apt/lists/*
+  
+  - name: install requirement dpkg to install php7.4
+    become: yes
+    become_user: root
+    become_method: su
+    apt: name={{ item }} state=latest update_cache=true
+    with_items:
+      - ca-certificates
+      - apt-transport-https
+      - curl
+      - python-apt
+      - software-properties-common
+    
+  - name: Add Php Repository 7.4
+    apt_repository:
+      repo: "ppa:ondrej/php"
+      state: present
+      filename: php.list
+      update_cache: true
+     
+  - name: install nginx php7.4
+    become: yes
+    become_user: root
+    become_method: su
+    apt: name={{ item }} state=latest update_cache=true
+    with_items:
+      - nginx
+      - nginx-extras
+      - curl
+      - wget
+      - php7.4
+      - php7.4-fpm
+      - php7.4-curl
+      - php7.4-xml
+      - php7.4-gd
+      - php7.4-opcache
+      - php7.4-mbstring
+      - php7.4-zip
+      - php7.4-json
+      - php7.4-cli
+      - php7.4-mysqlnd
+      - php7.4-xmlrpc
+      
+  - name: wget wordpress
+    shell: wget -c http://wordpress.org/latest.tar.gz
+      
+  - name: tar latest.tar.gz
+    shell: tar -xvzf latest.tar.gz
+    
+  - name: copy folder wordpress
+    shell: cp -R wordpress /var/www/html/blog
+    
+  - name: chmod
+    become: yes
+    become_user: root
+    become_method: su
+    command: chmod 775 -R /var/www/html/blog/
+    
+  - name: copy .wp-config.conf
+    template:
+      src=templates/wp.conf
+      dest=/var/www/html/blog/wp-config.php
+      
+  - name: copy wp.local
+    template:
+      src=templates/wp.local
+      dest=/etc/nginx/sites-available/{{ domain }}
+    vars:
+      servername: '{{ domain }}'
+
+  - name: Delete another nginx config
+
+    become: yes
+    become_user: root
+    become_method: su
+    command: rm -f /etc/nginx/sites-enabled/*
+    
+  - name: Symlink sites-available wordpress
+    command: ln -sfn /etc/nginx/sites-available/{{ domain }} /etc/nginx/sites-enabled/{{ domain }}
+    notify:
+      - restart nginx
+
+  - name: Write {{ domain }} to /etc/hosts
+    lineinfile:
+      dest: /etc/hosts
+      regexp: '.*{{ domain }}$'
+      line: "127.0.0.1   {{ domain }}"
+      state: present
+
+  - name: enable module php mbstring
+    command: phpenmod mbstring
+    notify:
+      - restart php
+  ```
+
+- Isi pada /templates/wp.conf
+  ```
+  <?php
+  /**
+  * The base configuration for WordPress
+  *
+  * The wp-config.php creation script uses this file during the installation.
+  * You don't have to use the web site, you can copy this file to "wp-config.php"
+  * and fill in the values.
+  *
+  * This file contains the following configurations:
+  *
+  * * MySQL settings
+  * * Secret keys
+  * * Database table prefix
+  * * ABSPATH
+  *
+  * @link https://wordpress.org/support/article/editing-wp-config-php/
+  *
+  * @package WordPress
+  */
+
+  define( 'WP_HOME', 'http://vm.local/blog' );
+  define( 'WP_SITEURL', 'http://vm.local/blog' );
+
+  // ** MySQL settings - You can get this info from your web host ** //
+  /** The name of the database for WordPress */
+  define( 'DB_NAME', 'blog' );
+
+  /** MySQL database username */
+  define( 'DB_USER', 'admin' );
+
+  /** MySQL database password */
+  define( 'DB_PASSWORD', 'chintya' );
+
+  /** MySQL hostname */
+  define( 'DB_HOST', '10.0.3.200:3306' );
+
+  /** Database charset to use in creating database tables. */
+  define( 'DB_CHARSET', 'utf8' );
+
+  /** The database collate type. Don't change this if in doubt. */
+  define( 'DB_COLLATE', '' );
+
+  /**#@+
+  * Authentication unique keys and salts.
+  *
+  * Change these to different unique phrases! You can generate these using
+  * the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}.
+  *
+  * You can change these at any point in time to invalidate all existing cookies.
+  * This will force all users to have to log in again.
+  *
+  * @since 2.6.0
+  */
+  define( 'AUTH_KEY',         'put your unique phrase here' );
+  define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
+  define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
+  define( 'NONCE_KEY',        'put your unique phrase here' );
+  define( 'AUTH_SALT',        'put your unique phrase here' );
+  define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
+  define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
+  define( 'NONCE_SALT',       'put your unique phrase here' );
+
+  /**#@-*/
+
+  /**
+  * WordPress database table prefix.
+  *
+  * You can have multiple installations in one database if you give each
+  * a unique prefix. Only numbers, letters, and underscores please!
+  */
+  $table_prefix = 'wp_';
+
+  /**
+  * For developers: WordPress debugging mode.
+  *
+  * Change this to true to enable the display of notices during development.
+  * It is strongly recommended that plugin and theme developers use WP_DEBUG
+  * in their development environments.
+  *
+  * For information on other constants that can be used for debugging,
+  * visit the documentation.
+  *
+  * @link https://wordpress.org/support/article/debugging-in-wordpress/
+  */
+  define( 'WP_DEBUG', false );
+
+  /* Add any custom values between this line and the "stop editing" line. */
+
+
+
+  /* That's all, stop editing! Happy publishing. */
+
+  /** Absolute path to the WordPress directory. */
+  if ( ! defined( 'ABSPATH' ) ) {
+        define( 'ABSPATH', __DIR__ . '/' );
+  }
+
+  /** Sets up WordPress vars and included files. */
+  require_once ABSPATH . 'wp-settings.php';
+  ```
+
+- Isi pada /templates/wp.local
+  ```
+  server {
+
+      listen 80;
+
+      server_name {{ domain }};
+
+      root /var/www/html/blog;
+      index index.php;
+
+      charset utf-8;
+
+      location / {
+          try_files $uri $uri/ /index.php?$query_string;
+      }
+
+      location ~ \.php$ {
+          try_files $uri =404;
+          fastcgi_split_path_info ^(.+\.php)(/.+)$;
+          fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+          fastcgi_index index.php;
+          fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+          include fastcgi_params;
+      }
+  }
+  ```
+- Isi /handlers/main.yml
+  ```
+  ---
+  - name: restart nginx
+  become: yes
+  become_user: root
+  become_method: su
+  action: service name=nginx state=restarted
+
+  - name: restart php
+  become: yes
+  become_user: root
+  become_method: su
+  action: service name=php7.4-fpm state=restarted
+  ```
+  ![A1](asset/47.png)
+- Jalankan
+  ```
+  cd ~/ansible/modul2-ansible
+  ansible-playbook -i hosts deploy-wp.yml -k
+  ```
+  ![A1](asset/48.png)
+- Hasil
+  ![A1](asset/49.png)
+  ###
+  ![A1](asset/50.png)
+  ###
+  ![A1](asset/51.png)
+  ###
+  ![A1](asset/52.png)
+   
+   
+   
 
    - masuk ansible untuk install wordpress
      ```
