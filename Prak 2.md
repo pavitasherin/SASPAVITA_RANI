@@ -160,24 +160,26 @@
       ssh root@10.0.3.103
       ```
      
-     ![8](https://user-images.githubusercontent.com/78127403/144477196-91d7540c-b93c-4a4a-a9fa-e0467ba2be93.jpg)
+      ![8](https://user-images.githubusercontent.com/78127403/144477196-91d7540c-b93c-4a4a-a9fa-e0467ba2be93.jpg)
 
      
      
 
 3. **vm.local/**
 
-   - masuk ansible untuk install laravel
-     ```
-     cd ~/ansible/
-     mkdir laravel/
-     cd laravel/
-     ```
-     ![1](https://user-images.githubusercontent.com/78127403/144485504-b86a2c70-8e0a-4b3d-87b7-5ea6d61b3f21.jpg)
+   - Install laravel dengan ansible
+   
+     1.First we need to enter to `cd ~/ansible/modul2-ansible` and then we need to make file with the name install-laravel.yml
+      
+       ![1](https://user-images.githubusercontent.com/78127403/144529896-c20a7eb0-8e35-43aa-a859-3179f10a8f6c.jpg)
 
-     ![3](https://user-images.githubusercontent.com/78127403/144485508-9209c792-2ead-42b3-9f8e-2b20dc583994.jpg)
+       ![2](https://user-images.githubusercontent.com/78127403/144529901-664d1d24-fe02-4eb0-9c69-444ee1f109d8.jpg)
 
-     ![2](https://user-images.githubusercontent.com/78127403/144485751-beaceef7-db91-49fe-b2b6-256c5a6107e8.jpg)
+       ![3](https://user-images.githubusercontent.com/78127403/144529904-f10f25fe-d047-4cc6-8ac7-7ed955b8e26c.jpg)
+
+
+
+
 
    - Install PHP
      ```
