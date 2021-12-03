@@ -657,54 +657,53 @@
       require_once ABSPATH . 'wp-settings.php';
       ```
 
-- Isi pada /templates/wp.local
-  ```
-  server {
+    - Isi pada /templates/wp.local
+      ```
+      server {
 
-      listen 80;
+          listen 80;
 
-      server_name {{ domain }};
+          server_name {{ domain }};
 
-      root /var/www/html/blog;
-      index index.php;
+          root /var/www/html/blog;
+          index index.php;
 
-      charset utf-8;
+          charset utf-8;
 
-      location / {
-          try_files $uri $uri/ /index.php?$query_string;
+          location / {
+              try_files $uri $uri/ /index.php?$query_string;
+          }
+
+          location ~ \.php$ {
+              try_files $uri =404;
+              fastcgi_split_path_info ^(.+\.php)(/.+)$;
+              fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+              fastcgi_index index.php;
+              fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+              include fastcgi_params;
+          }
       }
 
-      location ~ \.php$ {
-          try_files $uri =404;
-          fastcgi_split_path_info ^(.+\.php)(/.+)$;
-          fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
-          fastcgi_index index.php;
-          fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-          include fastcgi_params;
-      }
-  }
+      ```
+      ![7](https://user-images.githubusercontent.com/78127403/144533924-a2583cea-ce2f-4cf2-a3bc-79bdc98edddf.jpg)
 
-   ![7](https://user-images.githubusercontent.com/78127403/144533924-a2583cea-ce2f-4cf2-a3bc-79bdc98edddf.jpg)
+      ![8](https://user-images.githubusercontent.com/78127403/144533926-042874c8-650d-40df-b851-3e18b5f95717.jpg)
 
-   ![8](https://user-images.githubusercontent.com/78127403/144533926-042874c8-650d-40df-b851-3e18b5f95717.jpg)
-
-   ![9](https://user-images.githubusercontent.com/78127403/144533928-b9380665-9932-4f7b-9eed-fa32777f95a1.jpg)
+      ![9](https://user-images.githubusercontent.com/78127403/144533928-b9380665-9932-4f7b-9eed-fa32777f95a1.jpg)
    
-   ![10](https://user-images.githubusercontent.com/78127403/144533930-fe2da0d3-64ef-4d13-8818-3dbe21ff91d6.jpg)
+      ![10](https://user-images.githubusercontent.com/78127403/144533930-fe2da0d3-64ef-4d13-8818-3dbe21ff91d6.jpg)
    
-   ![11](https://user-images.githubusercontent.com/78127403/144533932-20450a29-a551-4656-896f-48e816c9dcda.jpg)
-
-
-  ```
-- Isi /handlers/main.yml
-  ```
-  ---
-  - name: restart nginx
-  become: yes
-  become_user: root
-  become_method: su
-  action: service name=nginx state=restarted
-![12](https://user-images.githubusercontent.com/78127403/144534036-f8a9cf33-414b-49bd-975e-e7148d97c863.jpg)
+      ![11](https://user-images.githubusercontent.com/78127403/144533932-20450a29-a551-4656-896f-48e816c9dcda.jpg)
+      
+      -Isi /handlers/main.yml
+       ```
+       ---
+       - name: restart nginx
+         become: yes
+         become_user: root
+         become_method: su
+         action: service name=nginx state=restarted
+  ![12](https://user-images.githubusercontent.com/78127403/144534036-f8a9cf33-414b-49bd-975e-e7148d97c863.jpg)
 
   - name: restart php
   become: yes
