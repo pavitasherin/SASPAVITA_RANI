@@ -497,6 +497,63 @@
 
 **Soal Tambahan**
 
+- buat file ubah-socket.yml
+  ```
+  - hosts: landing
+    tasks:
+    - name: www.conf
+      lineinfile:
+         dest: /etc/php/7.4/fpm/pool.d/www.conf
+         regexp: '^listen = /run/php/php7.4-fpm.sock'
+         line: listen = 127.0.0.1:9001
+         state: present
+    - name: rubah di sites-available
+      lineinfile:
+         dest: /etc/nginx/sites-available/lxc_landing.dev
+         regexp: '^        fastcgi_pass'
+         line:         fastcgi_pass 127.0.0.1:9001;
+    - name: restart nginx
+      become: yes
+      become_user: root
+      become_method: su
+      action: service name=nginx state=restarted
+  ```
+- buat file ubah-socket-php7.yml
+  ```
+  - hosts: php7
+    tasks:
+    - name: www.conf
+      lineinfile:
+         dest: /etc/php/7.4/fpm/pool.d/www.conf
+         regexp: '^listen = /run/php/php7.4-fpm.sock'
+         line: listen = 127.0.0.1:9001
+         state: present
+    - name: rubah di sites-available
+      lineinfile:
+         dest: /etc/nginx/sites-available/lxc_php7.dev
+         regexp: '^        fastcgi_pass'
+         line:         fastcgi_pass 127.0.0.1:9001;
+    - name: restart nginx
+      become: yes
+      become_user: root
+      become_method: su
+      action: service name=nginx state=restarted
+    - name: restart php
+      become: yes
+      become_user: root
+      become_method: su
+      action: service name=php7.4-fpm state=restarted
+  ```
+- Jalankan
+  ```
+  cd ~/ansible/modul2-ansible
+  ansible-playbook -i hosts ubah-socket.yml -k
+  ``` 
+  ![2](https://user-images.githubusercontent.com/92929042/144593226-0e153c69-694a-4c28-b4b3-8c2dfd6b99fd.jpg)
+  ![4](https://user-images.githubusercontent.com/92929042/144593251-902c69c8-e179-4b36-9b77-bdc648eb2376.jpg)
+
+
+-----------------------------------------------------------------------------------------------------
 1. Laravel
 
    - masuk pada konfigurasi file lxc_landing
