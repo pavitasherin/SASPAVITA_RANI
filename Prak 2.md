@@ -473,19 +473,19 @@
          - python-apt
          - software-properties-common
     
-    - name: Add Php Repository 7.4
-      apt_repository:
-      repo: "ppa:ondrej/php"
-      state: present
-      filename: php.list
-      update_cache: true
+     - name: Add Php Repository 7.4
+       apt_repository:
+       repo: "ppa:ondrej/php"
+       state: present
+       filename: php.list
+       update_cache: true
      
-    - name: install nginx php7.4
-      become: yes
-      become_user: root
-      become_method: su
-      apt: name={{ item }} state=latest update_cache=true
-      with_items:
+     - name: install nginx php7.4
+       become: yes
+       become_user: root
+       become_method: su
+       apt: name={{ item }} state=latest update_cache=true
+       with_items:
            - nginx
            - nginx-extras
            - curl
@@ -502,57 +502,57 @@
            - php7.4-mysqlnd
            - php7.4-xmlrpc
       
-   - name: wget wordpress
-     shell: wget -c http://wordpress.org/latest.tar.gz
+    - name: wget wordpress
+      shell: wget -c http://wordpress.org/latest.tar.gz
       
-   - name: tar latest.tar.gz
-     shell: tar -xvzf latest.tar.gz
+    - name: tar latest.tar.gz
+      shell: tar -xvzf latest.tar.gz
     
-   - name: copy folder wordpress
-     shell: cp -R wordpress /var/www/html/blog
+    - name: copy folder wordpress
+      shell: cp -R wordpress /var/www/html/blog
     
-   - name: chmod
-     become: yes
-     become_user: root
-     become_method: su
-     command: chmod 775 -R /var/www/html/blog/
+    - name: chmod
+      become: yes
+      become_user: root
+      become_method: su
+      command: chmod 775 -R /var/www/html/blog/
     
-   - name: copy .wp-config.conf
-     template:
-       src=templates/wp.conf
-       dest=/var/www/html/blog/wp-config.php
+    - name: copy .wp-config.conf
+      template:
+        src=templates/wp.conf
+        dest=/var/www/html/blog/wp-config.php
       
-   - name: copy wp.local
-     template:
-       src=templates/wp.local
-       dest=/etc/nginx/sites-available/{{ domain }}
-     vars:
-       servername: '{{ domain }}'
+    - name: copy wp.local
+      template:
+        src=templates/wp.local
+        dest=/etc/nginx/sites-available/{{ domain }}
+      vars:
+        servername: '{{ domain }}'
 
-   - name: Delete another nginx config
+    - name: Delete another nginx config
 
-     become: yes
-     become_user: root
-     become_method: su
-     command: rm -f /etc/nginx/sites-enabled/*
+      become: yes
+      become_user: root
+      become_method: su
+      command: rm -f /etc/nginx/sites-enabled/*
     
-   - name: Symlink sites-available wordpress
-     command: ln -sfn /etc/nginx/sites-available/{{ domain }} /etc/nginx/sites-enabled/{{ domain }}
-     notify:
-         - restart nginx
+    - name: Symlink sites-available wordpress
+      command: ln -sfn /etc/nginx/sites-available/{{ domain }} /etc/nginx/sites-enabled/{{ domain }}
+      notify:
+          - restart nginx
 
-   - name: Write {{ domain }} to /etc/hosts
-     lineinfile:
-       dest: /etc/hosts
-       regexp: '.*{{ domain }}$'
-       line: "127.0.0.1   {{ domain }}"
-       state: present
+    - name: Write {{ domain }} to /etc/hosts
+      lineinfile:
+        dest: /etc/hosts
+        regexp: '.*{{ domain }}$'
+        line: "127.0.0.1   {{ domain }}"
+        state: present
 
-   - name: enable module php mbstring
-     command: phpenmod mbstring
-     notify:
-       -restart php
-   ```
+    - name: enable module php mbstring
+      command: phpenmod mbstring
+      notify:
+        -restart php
+    ```
 
    - Isi pada /templates/wp.conf
    ```
