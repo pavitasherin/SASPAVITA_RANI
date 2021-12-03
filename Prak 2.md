@@ -428,146 +428,156 @@
 
 4. **vm.local/blog**
    - Edit deploy-wp
-  ```
-  cd ~/ansible/modul2-ansible
-  nano deploy-wp.yml
-  ```
-  ![A1](asset/45.png)
-- Buat roles wp
-  ```
-  mkdir -p roles/wp
-  mkdir -p roles/wp/handlers
-  mkdir -p roles/wp/tasks
-  mkdir -p roles/wp/templates
-  ```
-  ![A1](asset/46.png)
-- Isi pada /tasks/main.yml
-  ```
-  ---
-  - name: delete apt chache
-    become: yes
-    become_user: root
-    become_method: su
-    command: rm -vf /var/lib/apt/lists/*
+     ```
+     cd ~/ansible/modul2-ansible
+     nano deploy-wp.yml
+     ```
+
+     ![1](https://user-images.githubusercontent.com/78127403/144533283-05315c93-29cb-4f40-a428-1689c346ef4f.jpg)
   
-  - name: install requirement dpkg to install php7.4
-    become: yes
-    become_user: root
-    become_method: su
-    apt: name={{ item }} state=latest update_cache=true
-    with_items:
-      - ca-certificates
-      - apt-transport-https
-      - curl
-      - python-apt
-      - software-properties-common
+     ![2](https://user-images.githubusercontent.com/78127403/144533289-00ebd68c-b46d-4b2e-a2d8-8a7325afa793.jpg)
+
+   - Buat roles wp
+     ```
+     mkdir -p roles/wp
+     mkdir -p roles/wp/handlers
+     mkdir -p roles/wp/tasks
+     mkdir -p roles/wp/templates
+     ```
+     ![3](https://user-images.githubusercontent.com/78127403/144533474-fd5056ef-3b92-4ffc-9046-4d857cf46051.jpg)
+
+     ![4](https://user-images.githubusercontent.com/78127403/144533482-688b3ba1-ca31-47cf-9e93-b2d6823d6092.jpg)
+     
+     ![5](https://user-images.githubusercontent.com/78127403/144533485-56062ec5-35e4-42b5-b487-7e991fec0a3e.jpg)
+
+     ![6](https://user-images.githubusercontent.com/78127403/144533486-2dcb7c91-c7ea-41b7-9e0d-70a0b04df54f.jpg)
+
+   - Isi pada /tasks/main.yml
+     ```
+     ---
+     - name: delete apt chache
+       become: yes
+       become_user: root
+       become_method: su
+       command: rm -vf /var/lib/apt/lists/*
+  
+     - name: install requirement dpkg to install php7.4
+       become: yes
+       become_user: root
+       become_method: su
+       apt: name={{ item }} state=latest update_cache=true
+       with_items:
+         - ca-certificates
+         - apt-transport-https
+         - curl
+         - python-apt
+         - software-properties-common
     
-  - name: Add Php Repository 7.4
-    apt_repository:
+    - name: Add Php Repository 7.4
+      apt_repository:
       repo: "ppa:ondrej/php"
       state: present
       filename: php.list
       update_cache: true
      
-  - name: install nginx php7.4
-    become: yes
-    become_user: root
-    become_method: su
-    apt: name={{ item }} state=latest update_cache=true
-    with_items:
-      - nginx
-      - nginx-extras
-      - curl
-      - wget
-      - php7.4
-      - php7.4-fpm
-      - php7.4-curl
-      - php7.4-xml
-      - php7.4-gd
-      - php7.4-opcache
-      - php7.4-mbstring
-      - php7.4-zip
-      - php7.4-json
-      - php7.4-cli
-      - php7.4-mysqlnd
-      - php7.4-xmlrpc
+    - name: install nginx php7.4
+      become: yes
+      become_user: root
+      become_method: su
+      apt: name={{ item }} state=latest update_cache=true
+      with_items:
+           - nginx
+           - nginx-extras
+           - curl
+           - wget
+           - php7.4
+           - php7.4-fpm
+           - php7.4-curl
+           - php7.4-gd
+           - php7.4-opcache
+           - php7.4-mbstring
+           - php7.4-zip
+           - php7.4-json
+           - php7.4-cli
+           - php7.4-mysqlnd
+           - php7.4-xmlrpc
       
-  - name: wget wordpress
-    shell: wget -c http://wordpress.org/latest.tar.gz
+   - name: wget wordpress
+     shell: wget -c http://wordpress.org/latest.tar.gz
       
-  - name: tar latest.tar.gz
-    shell: tar -xvzf latest.tar.gz
+   - name: tar latest.tar.gz
+     shell: tar -xvzf latest.tar.gz
     
-  - name: copy folder wordpress
-    shell: cp -R wordpress /var/www/html/blog
+   - name: copy folder wordpress
+     shell: cp -R wordpress /var/www/html/blog
     
-  - name: chmod
-    become: yes
-    become_user: root
-    become_method: su
-    command: chmod 775 -R /var/www/html/blog/
+   - name: chmod
+     become: yes
+     become_user: root
+     become_method: su
+     command: chmod 775 -R /var/www/html/blog/
     
-  - name: copy .wp-config.conf
-    template:
-      src=templates/wp.conf
-      dest=/var/www/html/blog/wp-config.php
+   - name: copy .wp-config.conf
+     template:
+       src=templates/wp.conf
+       dest=/var/www/html/blog/wp-config.php
       
-  - name: copy wp.local
-    template:
-      src=templates/wp.local
-      dest=/etc/nginx/sites-available/{{ domain }}
-    vars:
-      servername: '{{ domain }}'
+   - name: copy wp.local
+     template:
+       src=templates/wp.local
+       dest=/etc/nginx/sites-available/{{ domain }}
+     vars:
+       servername: '{{ domain }}'
 
-  - name: Delete another nginx config
+   - name: Delete another nginx config
 
-    become: yes
-    become_user: root
-    become_method: su
-    command: rm -f /etc/nginx/sites-enabled/*
+     become: yes
+     become_user: root
+     become_method: su
+     command: rm -f /etc/nginx/sites-enabled/*
     
-  - name: Symlink sites-available wordpress
-    command: ln -sfn /etc/nginx/sites-available/{{ domain }} /etc/nginx/sites-enabled/{{ domain }}
-    notify:
-      - restart nginx
+   - name: Symlink sites-available wordpress
+     command: ln -sfn /etc/nginx/sites-available/{{ domain }} /etc/nginx/sites-enabled/{{ domain }}
+     notify:
+         - restart nginx
 
-  - name: Write {{ domain }} to /etc/hosts
-    lineinfile:
-      dest: /etc/hosts
-      regexp: '.*{{ domain }}$'
-      line: "127.0.0.1   {{ domain }}"
-      state: present
+   - name: Write {{ domain }} to /etc/hosts
+     lineinfile:
+       dest: /etc/hosts
+       regexp: '.*{{ domain }}$'
+       line: "127.0.0.1   {{ domain }}"
+       state: present
 
-  - name: enable module php mbstring
-    command: phpenmod mbstring
-    notify:
-      - restart php
-  ```
+   - name: enable module php mbstring
+     command: phpenmod mbstring
+     notify:
+       -restart php
+   ```
 
-- Isi pada /templates/wp.conf
-  ```
-  <?php
-  /**
-  * The base configuration for WordPress
-  *
-  * The wp-config.php creation script uses this file during the installation.
-  * You don't have to use the web site, you can copy this file to "wp-config.php"
-  * and fill in the values.
-  *
-  * This file contains the following configurations:
-  *
-  * * MySQL settings
-  * * Secret keys
-  * * Database table prefix
-  * * ABSPATH
-  *
-  * @link https://wordpress.org/support/article/editing-wp-config-php/
-  *
-  * @package WordPress
-  */
+   - Isi pada /templates/wp.conf
+   ```
+   <?php
+   /**
+   * The base configuration for WordPress
+   *
+   * The wp-config.php creation script uses this file during the installation.
+   * You don't have to use the web site, you can copy this file to "wp-config.php"
+   * and fill in the values.
+   *
+   * This file contains the following configurations:
+   *
+    * * MySQL settings
+    * * Secret keys
+    * * Database table prefix
+    * * ABSPATH
+    *
+    * @link https://wordpress.org/support/article/editing-wp-config-php/
+    *
+    * @package WordPress
+     */
 
-  define( 'WP_HOME', 'http://vm.local/blog' );
-  define( 'WP_SITEURL', 'http://vm.local/blog' );
+    define( 'WP_HOME', 'http://vm.local/blog' );
+    define( 'WP_SITEURL', 'http://vm.local/blog' );
 
   // ** MySQL settings - You can get this info from your web host ** //
   /** The name of the database for WordPress */
@@ -673,6 +683,18 @@
           include fastcgi_params;
       }
   }
+
+   ![7](https://user-images.githubusercontent.com/78127403/144533924-a2583cea-ce2f-4cf2-a3bc-79bdc98edddf.jpg)
+
+   ![8](https://user-images.githubusercontent.com/78127403/144533926-042874c8-650d-40df-b851-3e18b5f95717.jpg)
+
+   ![9](https://user-images.githubusercontent.com/78127403/144533928-b9380665-9932-4f7b-9eed-fa32777f95a1.jpg)
+   
+   ![10](https://user-images.githubusercontent.com/78127403/144533930-fe2da0d3-64ef-4d13-8818-3dbe21ff91d6.jpg)
+   
+   ![11](https://user-images.githubusercontent.com/78127403/144533932-20450a29-a551-4656-896f-48e816c9dcda.jpg)
+
+
   ```
 - Isi /handlers/main.yml
   ```
@@ -682,6 +704,7 @@
   become_user: root
   become_method: su
   action: service name=nginx state=restarted
+![12](https://user-images.githubusercontent.com/78127403/144534036-f8a9cf33-414b-49bd-975e-e7148d97c863.jpg)
 
   - name: restart php
   become: yes
@@ -697,13 +720,15 @@
   ```
   ![A1](asset/48.png)
 - Hasil
-  ![A1](asset/49.png)
-  ###
-  ![A1](asset/50.png)
-  ###
-  ![A1](asset/51.png)
-  ###
-  ![A1](asset/52.png)
+
+  ![15](https://user-images.githubusercontent.com/78127403/144534082-507b443d-df88-4b31-a7d2-9299ba72283b.jpg)
+
+  ![16](https://user-images.githubusercontent.com/78127403/144534086-3b74f634-298e-4d05-a7fe-24ca75268791.jpg)
+
+  ![17](https://user-images.githubusercontent.com/78127403/144534089-e3db5d7c-531e-408a-a6f2-d2842da98aa1.jpg)
+
+   ![18](https://user-images.githubusercontent.com/78127403/144534092-a379200b-311a-4f5a-91e5-405ae569954f.jpg)
+
    
 
 **Soal Tambahan**
