@@ -223,8 +223,49 @@
        ![12](https://user-images.githubusercontent.com/78127403/144593922-61511a0d-e4ab-4216-9c7f-6a1280bafeef.jpg)
        
      5.Lalu masukkan templete env.template (Ini adalah laravel konfigurasi)
+     
+       ```
+       cd roles/lv/templates
+       nano env.template
+       ```
+       ![13](https://user-images.githubusercontent.com/78127403/144594715-b66736f8-29f8-472a-972e-0a5c1e76f2eb.jpg)
 
-  
+       ![14](https://user-images.githubusercontent.com/78127403/144594726-40107d0e-e968-4a85-ab52-11c65d5c2533.jpg)
+
+       ![15](https://user-images.githubusercontent.com/78127403/144594732-7ff56b53-9cff-4014-a504-1cd60660747e.jpg)
+
+     6.Setelah itu kita masukkan templates lv.conf untuk nginx configuration
+     
+       ```
+       nano lv.conf
+       ```
+       ![16](https://user-images.githubusercontent.com/78127403/144594915-db77f685-4253-4483-9427-6f75fb38d92e.jpg)
+
+       ![17](https://user-images.githubusercontent.com/78127403/144594920-5a4d7c8c-7fa7-4f21-b82a-7ea9033a3e2a.jpg)
+       
+     7.Lalu kita memasukkan handlers main.yml untuk restart php dan nginx
+      
+       ```
+       cd roles/lv/handlers
+       nano main.yml
+       ```
+       ![18](https://user-images.githubusercontent.com/78127403/144595183-19c5f28f-fa66-4aad-84ed-e9b1d4d3fb93.jpg)
+
+       ![19](https://user-images.githubusercontent.com/78127403/144595190-fb228894-8944-46ab-af1a-3540950b9512.jpg)
+
+     8.Setelah itu kita jalankan ansible playbook
+     
+       ```
+       ansible-playbook -i hosts install-laravel -k
+       ```
+       ![20](https://user-images.githubusercontent.com/78127403/144595332-7f5d9c93-f53e-47fa-8d7a-feea619d2cf8.jpg)
+
+       ![21](https://user-images.githubusercontent.com/78127403/144595324-044f33ac-9e0e-4d0b-b250-456256d21a77.jpg)
+       
+     9.Sudah selesai terinstal. Tetapi kikta belum selesai, kita membutuhkan untuk mengeceknya. Buka http://vm.local/ di web browser
+
+       ![22](https://user-images.githubusercontent.com/78127403/144595410-dd9fe3a2-4795-4f0c-9e80-7cb1196f9ab7.jpg)
+
 
 4. **vm.local/blog**
    - Edit deploy-wp
