@@ -577,171 +577,61 @@
 
 **Soal Tambahan**
 
-1. Laravel
+- Buat file ubah-socket.yml
+  ```
+  - hosts: landing
+    tasks:
+    - name: www.conf
+      lineinfile:
+         dest: /etc/php/7.4/fpm/pool.d/www.conf
+         regexp: '^listen = /run/php/php7.4-fpm.sock'
+         line: listen = 127.0.0.1:9001
+         state: present
+    - name: rubah di sites-available
+      lineinfile:
+         dest: /etc/nginx/sites-available/lxc_landing.dev
+         regexp: '^        fastcgi_pass'
+         line:         fastcgi_pass 127.0.0.1:9001;
+    - name: restart nginx
+      become: yes
+      become_user: root
+      become_method: su
+      action: service name=nginx state=restarted
+  ```
+  ![3](https://user-images.githubusercontent.com/78127403/144752575-7a0f7aeb-83d2-4022-84a9-54a0708ed683.jpg)
 
-   - masuk pada konfigurasi file lxc_landing
+- Buat file ubah-socket-php7.yml
+  ```
+  - hosts: php7
+    tasks:
+    - name: www.conf
+      lineinfile:
+         dest: /etc/php/7.4/fpm/pool.d/www.conf
+         regexp: '^listen = /run/php/php7.4-fpm.sock'
+         line: listen = 127.0.0.1:9001
+         state: present
+    - name: rubah di sites-available
+      lineinfile:
+         dest: /etc/nginx/sites-available/lxc_php7.dev
+         regexp: '^        fastcgi_pass'
+         line:         fastcgi_pass 127.0.0.1:9001;
+    - name: restart nginx
+      become: yes
+      become_user: root
+      become_method: su
+      action: service name=nginx state=restarted
+    - name: restart php
+      become: yes
+      become_user: root
+      become_method: su
+      action: service name=php7.4-fpm state=restarted
+  ```
+  ![1](https://user-images.githubusercontent.com/78127403/144752591-908285bf-66ab-4c95-9dcd-d5803fb3bbbf.jpg)
 
-     ```
-     cd ~/ansible/laravel/
-     nano lxc_landing.dev
-     ```
-
-    ![1](https://user-images.githubusercontent.com/92453574/144454260-0268c6ab-f8f9-4176-89b1-57637a28e1b3.PNG)
-
-   
-
-   - akan tertampil seperti dibawah ini
-
-     ![2 sebelum](https://user-images.githubusercontent.com/92453574/144454266-874e97d1-d13c-49f7-9367-8e61778d9f3a.PNG)
-
-     
-
-   - kemudian rubah menjadi seperti gambar di bawah
-
-     ![2 sesudah](https://user-images.githubusercontent.com/92453574/144454268-ca06dc8c-579c-44aa-801a-e698c6d010df.PNG)
-
-     
-
-   - buat ansible dengan nama "tambahan.yml"
-
-     ```
-     nano tambahan.yml
-     ```
-
-     ![3](https://user-images.githubusercontent.com/92453574/144454272-f729e4a7-a77a-45ac-86ae-bd98ba089344.PNG)
-
-     
-
-   - jalankan ansible "tambahan.yml"
-
-     ```
-     ---
-     - hosts: all
-       become : yes
-       tasks:
-        - name: mengganti php sock
-          lineinfile:
-           path: /etc/php/7.4/fpm/pool.d/www.conf
-           regexp: '^(.*)listen =(.*)$'
-           line: 'listen = 127.0.0.1:9001'
-           backrefs: yes
-        - name: copy the nginx config file 
-          copy:
-           src: ~/ansible/laravel/lxc_landing.dev
-           dest: /etc/nginx/sites-available/lxc_landing.dev
-        - name: Symlink lxc_landing.dev
-          command: ln -sfn /etc/nginx/sites-available/lxc_landing.dev /etc/nginx/sites-enabled/lxc_landing.dev
-          args:
-           warn: false
-        - name: restart nginx
-          service:
-           name: nginx
-           state: restarted
-        - name: restart php7
-          service:
-           name: php7.4-fpm
-           state: restarted
-        - name: curl web
-          command: curl -i http://lxc_landing.dev
-          args:
-           warn: false
-     ```
-
-     ![4](https://user-images.githubusercontent.com/92453574/144454275-8616d722-c706-4fad-bd27-15c44609cd8e.PNG)
-     ![5](https://user-images.githubusercontent.com/92453574/144454276-051793f1-3ba1-4322-bdca-9d98dbc61b11.PNG)
-
-     
-
-   - buka vm.local untuk mengecek apakah berhasil.
-
-     ![6](https://user-images.githubusercontent.com/92453574/144454280-1c81ba96-6679-49be-a7a7-12ed236446f3.PNG)
-
-   - berhasil
-
-     
-
-   
-
-2. Wordpress
-
-   - masuk pada konfigurasi file wordpress.conf
-
-     ```
-     cd wordpress/
-     nano wordpress.conf
-     ```
-
-     ![1](https://user-images.githubusercontent.com/92453574/144454321-5a9855df-ca3f-4fe2-b0b8-e8ae7f056832.PNG)
-
-     
-
-   - akan tertampil seperti dibawah ini
-
-     ![2 sebelum](https://user-images.githubusercontent.com/92453574/144454324-5234b081-781a-47aa-9ce5-30c6cc711bbf.PNG)
-
-     
-
-   - kemudian ubah menjadi seperti di bawah ini
-
-     ![2 sesudah](https://user-images.githubusercontent.com/92453574/144454326-574058ef-2528-4226-bdd3-651c3a95a1d8.PNG)
-
-     
-
-   - buat ansible dengan nama "tambahan.yml"
-
-     ```
-     nano tambahan.yml
-     ```
-
-     ![3](https://user-images.githubusercontent.com/92453574/144454329-829ab04f-284e-47f8-8005-72e9201bcaa9.PNG)
-
-     
-
-   - jalankan ansible "tambahan.yml"
-
-     ```
-     ---
-     - hosts: all
-       become : yes
-       tasks:
-        - name: mengganti php sock
-          lineinfile:
-           path: /etc/php/7.4/fpm/pool.d/www.conf
-           regexp: '^(.*)listen =(.*)$'
-           line: 'listen = 127.0.0.1:9001'
-           backrefs: yes
-        - name: copy the nginx config file 
-          copy:
-           src: ~/ansible/wordpress/wordpress.conf
-           dest: /etc/nginx/sites-available/lxc_php7.dev
-        - name: Symlink lxc_php7.dev
-          command: ln -sfn /etc/nginx/sites-available/lxc_php7.dev /etc/nginx/sites-enabled/lxc_php7.dev
-          args:
-           warn: false
-        - name: restart nginx
-          service:
-           name: nginx
-           state: restarted
-        - name: restart php7
-          service:
-           name: php7.4-fpm
-           state: restarted
-        - name: curl web
-          command: curl -i http://lxc_php7.dev
-          args:
-           warn: false
-     ```
-
-     ![4](https://user-images.githubusercontent.com/92453574/144454333-f5781906-e330-4880-a0b8-b85cee85da88.PNG)
-
-     ![5](https://user-images.githubusercontent.com/92453574/144454337-8c341508-c2a4-4052-afba-250a0a616143.PNG)
-
-     
-
-   - buka vm.local/blog untuk mengecek apakah berhasil
-
-     ![6](https://user-images.githubusercontent.com/92453574/144454342-e37f8022-b5b6-48f4-a60f-08cbba37f956.PNG)
-
-   - berhasil
-
-
+- Jalankan
+  ```
+  cd ~/ansible/modul2-ansible
+  ansible-playbook -i hosts ubah-socket.yml -k
+  ``` 
+  ![4](https://user-images.githubusercontent.com/78127403/144752603-228a47fa-5c4b-4aca-bcea-3307f60ef124.jpg)
+  ![2](https://user-images.githubusercontent.com/78127403/144752606-4266fca9-368e-4045-a56c-f2def34c0b4b.jpg) 
