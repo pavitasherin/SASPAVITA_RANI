@@ -95,4 +95,6 @@ Soal praktikum dapat diakses disini [Klik disini.](https://github.com/aldonesia/
 - Buka Pengaturan Wifi, tambahkan server dns
   ![A1](asset/12.png)
 - Hasil
-  ![A1](asset/13.jpg)
+  <p align="center">
+        	<img src= "asset/13.jpg">
+  </p>
