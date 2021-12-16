@@ -1,4 +1,4 @@
-**Laporan Modul 2**
+**Laporan Modul 3**
 
 - Pavita Sherintama Giantoro (1202190051)
 - Rani Kusumawati (1202192029)
