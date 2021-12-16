@@ -10,7 +10,9 @@ Soal praktikum dapat diakses disini [Klik disini.](https://github.com/aldonesia/
   cd ~/ansible/laravel
   nano sublaravel.yml
   ```
-  ![A1](asset/1.png)
+  <p align="center">
+        	<img src= "asset/1.png">
+  </p>
   ```
   ---
   - hosts: all
@@ -23,9 +25,13 @@ Soal praktikum dapat diakses disini [Klik disini.](https://github.com/aldonesia/
            - dnsutils
   ```
 - Langkah selanjutnya adalah menginstal paket dengan ansible
-  ![A1](asset/2.png)
+  <p align="center">
+        	<img src= "asset/2.png">
+  </p>
 - Buat file config1.yml
-  ![A1](asset/3.png)
+  <p align="center">
+        	<img src= "asset/3.png">
+  </p>
   ```
   ---
   - hosts: all
@@ -78,22 +84,40 @@ Soal praktikum dapat diakses disini [Klik disini.](https://github.com/aldonesia/
        action: service name=bind9 state=restarted
   ```
 - Lakukan instalasi
-  ![A1](asset/4.png)
+  <p align="center">
+        	<img src= "asset/4.png">
+  </p>
 - Menambahkan subdomain ke /etc/host
-  ![A1](asset/5.png)
+  <p align="center">
+        	<img src= "asset/5.png">
+  </p>
 - Buka vm.local file
-  ![A1](asset/6.png)
+  <p align="center">
+        	<img src= "asset/6.png">
+  </p>
 - Tambahkan baris www. Setelah itu keluar lxc
-  ![A1](asset/7.png)
+  <p align="center">
+        	<img src= "asset/7.png">
+  </p>
 - Membuka dan mengedit vm.local di direktori /etc/nginx/sites-enabled/
-  ![A1](asset/8.png)
-  ![A1](asset/9.png)
+  <p align="center">
+        	<img src= "asset/8.png">
+  </p>
+  <p align="center">
+        	<img src= "asset/9.png">
+  </p>
 - Membuka dan mengedit vm.local di direktori /etc/bind/vm/
-  ![A1](asset/10.png)
+  <p align="center">
+        	<img src= "asset/10.png">
+  </p>
 - Mulai ulang semua paket
-  ![A1](asset/11.png)
+  <p align="center">
+        	<img src= "asset/11.png">
+  </p>
 - Buka Pengaturan Wifi, tambahkan server dns
-  ![A1](asset/12.png)
+  <p align="center">
+        	<img src= "asset/12.png">
+  </p>
 - Hasil
   <p align="center">
         	<img src= "asset/13.jpg">
