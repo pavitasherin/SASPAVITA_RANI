@@ -2,10 +2,9 @@
 
 - Pavita Sherintama Giantoro (1202190051)
 - Rani Kusumawati (1202192029)
-
----
+#
 Soal praktikum dapat diakses disini[Klik disini.](https://github.com/aldonesia/Sistem-Administrasi-Server-2021/blob/master/modul-3/silabus.md)
----
+#
 Masuk ke ~/ansible/laravel , kemudian membuat file dengan nama sublaravel.yml
 ```
 cd ~/ansible/laravel
