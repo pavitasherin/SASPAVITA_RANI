@@ -4,7 +4,7 @@
 - Rani Kusumawati (1202192029)
 
 ---
-Paktikum dilaksanakan berdasarkan keadaan yang tertera pada soal dan soal dapat diakses [Klik disini.](https://github.com/aldonesia/Sistem-Administrasi-Server-2021/blob/master/modul-3/silabus.md)
+Soal praktikum dapat diakses disini[Klik disini.](https://github.com/aldonesia/Sistem-Administrasi-Server-2021/blob/master/modul-3/silabus.md)
 ---
 Masuk ke ~/ansible/laravel , kemudian membuat file dengan nama sublaravel.yml
 ```
