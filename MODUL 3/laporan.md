@@ -94,3 +94,5 @@ Mulai ulang semua paket
 ![image](https://user-images.githubusercontent.com/92929042/146449597-ecd1dc31-ea81-41b1-8a85-b38ad9074b2b.png)
 Buka Pengaturan Wifi, tambahkan server dns
 ![image](https://user-images.githubusercontent.com/92929042/146449743-2cf7bf50-1e6c-4dad-a5ea-5da2de5c92a8.png)
+Hasil
+![22](https://user-images.githubusercontent.com/92929042/146450118-79f0763d-f382-4fef-a216-cf8ef913f2be.jpg)
