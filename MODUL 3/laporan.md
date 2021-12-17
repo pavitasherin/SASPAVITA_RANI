@@ -83,7 +83,7 @@ Soal praktikum dapat diakses disini [Klik disini.](https://github.com/aldonesia/
    - name: restart bind9
      action: service name=bind9 state=restarted
 ```
-- Lakukan instalasi
+- Jalankan ansible playbook
   <p align="center">
         	<img src= "asset/4.png">
   </p>
