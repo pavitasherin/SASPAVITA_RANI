@@ -120,5 +120,5 @@ Soal praktikum dapat diakses disini [Klik disini.](https://github.com/aldonesia/
   </p>
 - Hasil
   <p align="center">
-        	<img src= "asset/13.jpg">
+        	<img src= "asset/13.jpeg">
   </p>
