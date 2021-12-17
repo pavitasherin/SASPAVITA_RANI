@@ -24,7 +24,7 @@ Soal praktikum dapat diakses disini [Klik disini.](https://github.com/aldonesia/
          - bind9
          - dnsutils
  ```
-- Langkah selanjutnya adalah menginstal paket dengan ansible
+- Langkah selanjutnya adalah jalankan ansible playbook
   <p align="center">
         	<img src= "asset/2.png">
   </p>
