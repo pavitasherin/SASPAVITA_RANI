@@ -1,3 +1,8 @@
+**Laporan Modul 4**
+
+- Pavita Sherintama Giantoro (1202190051)
+- Rani Kusumawati (1202192029)
+#
 1. Apply loadbalancer for /blog and /app with conditions
    
    i. /blog using least_conn
