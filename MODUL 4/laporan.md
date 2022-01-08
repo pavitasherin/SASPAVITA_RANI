@@ -107,8 +107,6 @@
 		exit
 		```
 		
-		![8](assets/8.png)
-		
 	* Masuk ke lxc ubuntu_php7.4_3
 	
 		```sh
@@ -187,8 +185,7 @@
 		sudo lxc-copy -n debian_php5.6 -N debian_php5.6_2 -sKD
 		sudo lxc-copy -n debian_php5.6 -N debian_php5.6_3 -sKD
 		```
-		
-		![16](assets/16.png)
+		![13](https://user-images.githubusercontent.com/78127403/148646164-f221526a-86e9-4586-bc51-284a6b053f7c.jpg)
 		
 	* Start LXC 
 	
@@ -198,8 +195,8 @@
 		sudo lxc-start -n debian_php5.6_3
 		```
 		
-		![17](assets/17.png)
-		![18](assets/18.png)
+		![14](https://user-images.githubusercontent.com/78127403/148646174-d98e8fcf-cce1-4fb4-91f8-dd35204bdf02.jpg)
+
 		
 	* Masuk ke lxc debian_php5.6_2
 	
@@ -213,11 +210,9 @@
 		nano /etc/network/interfaces
 		```
 		
-		![19](assets/19.png)
-		
 		ganti ip menjadi 10.0.3.112
 		
-		![20](assets/20.png)
+		![15](https://user-images.githubusercontent.com/78127403/148646179-235d2f56-8a73-4d33-9a6e-06fda3337624.jpg)
 		
 		
 		Daftarkan domain lxc_php5_2.dev di hosts file
@@ -226,7 +221,8 @@
 		nano /etc/hosts
 		```
 		
-		![21](assets/21.png)
+		![16](https://user-images.githubusercontent.com/78127403/148646204-e0fbcafb-41ec-4d15-ac02-85ef0930aa5f.jpg)
+
 		
 		Konfigurasi nginx untuk lxc_php5.6_2.dev
 		
@@ -234,16 +230,14 @@
 		nano /etc/nginx/sites-available/lxc_php5.dev
 		```
 		
-		![22](assets/22.png)
-		
+		![17](https://user-images.githubusercontent.com/78127403/148646211-2e80c493-0868-4d31-9c3c-f32a9a0430f9.jpg)
+
 				
 		keluar dari debian_php5.6_2
 		
 		```sh
 		exit
 		```
-		
-		![23](assets/23.png)
 		
 	* Masuk ke lxc debian_php5.6_3
 	
@@ -257,12 +251,11 @@
 		nano /etc/network/interfaces
 		```
 		
-		![24](assets/24.png)
-		
 		ganti ip menjadi 10.0.3.122
 		
-		![25](assets/25.png)
 		
+		![18](https://user-images.githubusercontent.com/78127403/148646239-7a0aee84-42f0-4047-8168-9d59cd3a4f06.jpg)
+
 			
 		Daftarkan domain lxc_php5_3.dev di hosts file
 		
@@ -270,7 +263,8 @@
 		nano /etc/hosts
 		```
 		
-		![26](assets/26.png)
+		![19](https://user-images.githubusercontent.com/78127403/148646243-1deb6948-808e-42cd-aeac-54c3cf4beb39.jpg)
+
 		
 		Konfigurasi nginx untuk lxc_php5.6_3.dev
 		
@@ -278,14 +272,14 @@
 		nano /etc/nginx/sites-available/lxc_php5.dev
 		```
 		
-		![27](assets/27.png)
+		![20](https://user-images.githubusercontent.com/78127403/148646252-4bf4e974-a76c-4203-ad05-708007a2ce2d.jpg)
+
 		
 		exit dari debian_php5.6_3
 		
 		```sh
 		exit
 		```
-		![28](assets/28.png)
 
 3. Daftarkan semua kontainer ke dalam `etc host` pada VM
 
