@@ -1,14 +1,9 @@
-**Laporan Modul 4**
-
-- Pavita Sherintama Giantoro (1202190051)
-- Rani Kusumawati (1202192029)
-#
 # Modul 4 - Web Server, Load Balancing dan uji performansi
 
 Kelompok 7
 Nama Anggota :
-1. Rahmadina Oktaviana (1202190016)
-2. Riska Aprilia (1202190007)
+- Pavita Sherintama Giantoro (1202190051)
+- Rani Kusumawati (1202192029)
 ---
 ## Soal Praktikum
 1. Terapkan loadbalancer untuk /blog dan /app dengan ketentuan
