@@ -48,11 +48,10 @@
 		nano /etc/netplan/10-lxc.yaml
 		```
 		
-		![2](assets/2.png)
-		
 		ganti ip menjadi 10.0.3.111
 		
-		![3](assets/3.png)
+		![3](https://user-images.githubusercontent.com/78127403/148645855-42eaa357-3435-4f64-b60f-fdc9a6ebb5fe.jpg)
+
 		
 		terapkan konfigurasi netplan baru
 		
@@ -65,8 +64,8 @@
 		```sh
 		ip addr show eth0
 		```
-		
-		![4](assets/4.png)
+		![4](https://user-images.githubusercontent.com/78127403/148645837-670e384d-ec3b-42b3-9cde-acbc46ebf496.jpg)
+
 		
 		Daftarkan domain lxc_php7_2.dev di hosts file
 		
@@ -74,7 +73,8 @@
 		nano /etc/hosts
 		```
 		
-		![5](assets/5.png)
+		![5](https://user-images.githubusercontent.com/78127403/148645868-edf4209e-2a9d-48f0-8508-2bf5bbb18fe0.jpg)
+
 		
 		Konfigurasi nginx untuk lxc_php7.4_2.dev
 		
@@ -82,7 +82,8 @@
 		nano /etc/nginx/sites-available/lxc_php7.dev
 		```
 		
-		![6](assets/6.png)
+		![6](https://user-images.githubusercontent.com/78127403/148645879-7702a263-3cb7-4eb2-bb15-8a7b2218084e.jpg)
+
 		
 		Check configurasi nginx dan start nginx
 		
@@ -97,7 +98,8 @@
 		curl -i http://lxc_php7_2.dev
 		```
 		
-		![7](assets/7.png)
+		![7](https://user-images.githubusercontent.com/78127403/148645938-7f086b8f-2168-4e84-a50f-c80da5e8852e.jpg)
+
 		
 		keluar dari ubuntu_php7.4_2
 		
@@ -119,11 +121,10 @@
 		nano /etc/netplan/10-lxc.yaml
 		```
 		
-		![9](assets/9.png)
-		
 		ganti ip menjadi 10.0.3.121
 		
-		![10](assets/10.png)
+		![8](https://user-images.githubusercontent.com/78127403/148645994-cbe35721-3b1b-44e3-9d59-ef2fa65f19be.jpg)
+
 		
 		terapkan konfigurasi netplan baru
 		
@@ -137,7 +138,8 @@
 		ip addr show eth0
 		```
 		
-		![11](assets/11.png)
+		![9](https://user-images.githubusercontent.com/78127403/148646013-9b2be218-d26d-433c-97dc-2b1e5064e039.jpg)
+
 		
 		Daftarkan domain lxc_php7_3.dev di hosts file
 		
@@ -145,15 +147,15 @@
 		nano /etc/hosts
 		```
 		
-		![12](assets/12.png)
+		![10](https://user-images.githubusercontent.com/78127403/148646027-0ad30199-2dc1-4a1f-876e-94267c71f65b.jpg)
+
 		
 		Konfigurasi nginx untuk lxc_php7_3.dev
 		
 		```sh
 		nano /etc/nginx/sites-available/lxc_php7.dev
 		```
-		
-		![13](assets/13.png)
+		![11](https://user-images.githubusercontent.com/78127403/148646043-7c254c1f-0f58-4bd9-954a-67b4a2b4e81a.jpg)
 		
 		Check configurasi nginx dan start nginx
 		
@@ -168,14 +170,14 @@
 		curl -i http://lxc_php7_3.dev
 		```
 		
-		![14](assets/14.png)
+		![12](https://user-images.githubusercontent.com/78127403/148646062-af25c604-fea9-4207-8811-6f25fed4719f.jpg)
+
 		
 		exit dari ubuntu_php7.4_3
 		
 		```sh
 		exit
 		```
-		![15](assets/15.png)
 		
 2. Siapkan LXC untuk debian_php5.6
 	* Clone LXC debian_php5.6 menjadi debian_php5.6_2 dan debian_php5.6_3
