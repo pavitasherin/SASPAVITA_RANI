@@ -1,7 +1,4 @@
 # Modul 4 - Web Server, Load Balancing dan uji performansi
-
-Kelompok 7
-Nama Anggota :
 - Pavita Sherintama Giantoro (1202190051)
 - Rani Kusumawati (1202192029)
 ---
@@ -28,8 +25,8 @@ Nama Anggota :
 		sudo lxc-copy -n ubuntu_php7.4 -N ubuntu_php7.4_3 -sKD
 		```
 		
-		![lxc-clone result](assets/lxc-clone.png)
-		
+		![1](https://user-images.githubusercontent.com/78127403/148645617-6e0ea461-2302-4a26-bb89-4b085947ba17.jpg)
+
 	* Start LXC 
 	
 		```sh
@@ -37,9 +34,8 @@ Nama Anggota :
 		sudo lxc-start -n ubuntu_php7.4_2
 		sudo lxc-start -n ubuntu_php7.4_3
 		```
-		
-		![1](assets/1.png)
-		
+		![2](https://user-images.githubusercontent.com/78127403/148645632-d4c6f777-b6ec-41b6-89e8-5762b79c635e.jpg)
+
 	* Masuk ke lxc ubuntu_php7.4_2
 	
 		```sh
