@@ -283,74 +283,74 @@
 
 3. Daftarkan semua kontainer ke dalam `etc host` pada VM
 
-	![29](assets/29.png)
-	![](assets/30.png)
+	![21](https://user-images.githubusercontent.com/78127403/148646304-e10e0d97-cf3c-40b8-b999-27f1e2621b59.jpg)
+
 	
 	* Jalankan jmeter. Ganti angka pada box (number of threads) dari menu `user access` menjadi `50, 100, 150` . 
 
 	* number of threads `50`
 	
-	![](assets/31.png)
-	![](assets/32.png)
-	![](assets/33.png)
-	![](assets/34.png)
-	![](assets/35.png)
-	
+	![22](https://user-images.githubusercontent.com/78127403/148646362-02db8cdc-5d28-447d-9a6c-44cd973dd719.jpg)
+	![23](https://user-images.githubusercontent.com/78127403/148646365-cbf66e47-4fa9-41ab-b4c5-8a78820e926c.jpg)
+	![24](https://user-images.githubusercontent.com/78127403/148646383-ab7728e0-9656-44e6-9c3a-929fe98c628b.jpg)
+	![25](https://user-images.githubusercontent.com/78127403/148646385-c9ac2115-3d78-44d8-947c-fbb4a9b93a97.jpg)
+	![26](https://user-images.githubusercontent.com/78127403/148646387-0e23b63c-c517-43a2-8a1b-2515b7b2edbf.jpg)
+
 	* number of threads `100`
 
-	![](assets/36.png)
-	![](assets/37.png)
-	![](assets/38.png)
-	![](assets/39.png)
-	![](assets/40.png)
+	![27](https://user-images.githubusercontent.com/78127403/148646397-d6c5416c-757e-467d-b736-7d121b460204.jpg)
+	![28](https://user-images.githubusercontent.com/78127403/148646399-fee629dd-e1e8-4781-bb5a-5a4bd3fbef70.jpg)
+	![29](https://user-images.githubusercontent.com/78127403/148646403-d3abc493-c18f-454e-9c96-9ad9fd2babe4.jpg)
+	![30](https://user-images.githubusercontent.com/78127403/148646410-33772266-652f-405e-96ba-fa81e82fb98c.jpg)
+	![31](https://user-images.githubusercontent.com/78127403/148646415-638bb977-0723-457d-99be-dbed159ce876.jpg)
+
 	
 	* number of threads `150`
 
-	![](assets/41.png)
-	![](assets/42.png)
-	![](assets/43.png)
-	![44](assets/44.png)
-	![45](assets/45.png)
+	![32](https://user-images.githubusercontent.com/78127403/148646434-2f166b7f-e04d-4c53-a4b2-5a4a4c09ba7c.jpg)
+	![33](https://user-images.githubusercontent.com/78127403/148646439-258e6e70-2545-468b-8307-9d8f6724ae73.jpg)
+	![34](https://user-images.githubusercontent.com/78127403/148646440-8517beab-889b-4a38-907a-233d371db102.jpg)
+	![35](https://user-images.githubusercontent.com/78127403/148646441-7113bf27-7bf5-4a26-b562-22fbd45266d2.jpg)
+	![36](https://user-images.githubusercontent.com/78127403/148646443-63060402-d354-4ddb-937b-4c903a576d89.jpg)
+
 
 	* Konfigurasi load balancer menggunakan round robin (upstream) untuk halaman landing, php5, dan php7 `vm.local` pada nginx
 	
 		```sh
 		sudo nano /etc/nginx/sites-available/vm.local
 		```
-		
-		![46](assets/46.png)
-		![47](assets/47.png)
+		![37](https://user-images.githubusercontent.com/78127403/148646459-6a0387d4-ba07-46c1-abe8-bcc6b81674be.jpg)
 		
 		Ganti proxy_pass
 		
-		![](assets/48.png)
+		![38](https://user-images.githubusercontent.com/78127403/148646484-3ed06333-c57c-4df5-bf6d-d2f4a4084c39.jpg)
+
 		
 	* Jalankan kembali jmeter dan ulangi kembali untuk Ganti angka pada box (number of threads) dari menu `user access` menjadi `50, 100, 150` . 
 	
 	* number of threads `50`
 	
-	![](assets/49.png)
-	![](assets/50.png)
-	![](assets/51.png)
-	![](assets/52.png)
-	![](assets/53.png)
+	![39](https://user-images.githubusercontent.com/78127403/148646517-42de8609-e4e0-410c-a29b-069cbfe1b68b.jpg)
+	![40](https://user-images.githubusercontent.com/78127403/148646519-d4219d13-d060-4363-aef4-c8c848d43659.jpg)
+	![41](https://user-images.githubusercontent.com/78127403/148646522-27041751-6ce4-4ed4-945d-81e1000239ab.jpg)
+	![42](https://user-images.githubusercontent.com/78127403/148646523-51200e7b-bf32-4d55-a184-ab12567085a0.jpg)
+	![43](https://user-images.githubusercontent.com/78127403/148646527-53c2ff6f-956c-4826-af4d-b8ee3012dae4.jpg)
 	
 	* number of threads `100`
-
-	![](assets/54.png)
-	![](assets/55.png)
-	![](assets/56.png)
-	![](assets/57.png)
-	![](assets/58.png)
+	![44](https://user-images.githubusercontent.com/78127403/148646532-e41443cb-2569-4ade-b3ea-3dfed894c3bb.jpg)
+	![45](https://user-images.githubusercontent.com/78127403/148646536-311922e8-6416-4cdd-9a39-da371950d16d.jpg)
+	![46](https://user-images.githubusercontent.com/78127403/148646544-a00c021f-e541-4b54-852c-e6e3260b35dd.jpg)
+	![47](https://user-images.githubusercontent.com/78127403/148646547-dee230f1-4b7e-4dc1-8308-12da030a6056.jpg)
+	![48](https://user-images.githubusercontent.com/78127403/148646554-d2be503f-bd23-4627-9218-cb123cdba11b.jpg)
 	
 	* number of threads `150`
 
-	![](assets/59.png)
-	![](assets/60.png)
-	![](assets/61.png)
-	![](assets/62.png)
-	![](assets/63.png)
-	
+	![49](https://user-images.githubusercontent.com/78127403/148646563-b30a7e79-fd9a-4a8b-84c5-bd81fe3fd1c6.jpg)
+	![50](https://user-images.githubusercontent.com/78127403/148646578-a49bf7b3-a5b7-4042-b243-a496a719f32d.jpg)
+	![51](https://user-images.githubusercontent.com/78127403/148646588-db7e9e80-63b1-4294-8f38-a1038181528c.jpg)
+	![52](https://user-images.githubusercontent.com/78127403/148646599-57aea911-0918-43ac-9c3f-64df496d7dc3.jpg)
+	![53](https://user-images.githubusercontent.com/78127403/148646605-2b1b099d-034c-4aa5-b352-a234f7813988.jpg)
+
 		
 ## Analisys
 
