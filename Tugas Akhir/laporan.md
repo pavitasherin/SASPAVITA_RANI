@@ -10,8 +10,6 @@
 
 - buat folder di direktori ansibel sudo `mkdir -p ~/ansible/tubes`
 
-  ![lxc](https://user-images.githubusercontent.com/92453574/152085884-a16c213c-a85b-4e16-b07f-391250e1245e.jpeg)
-  ![ansible](https://user-images.githubusercontent.com/92453574/152085834-30bf5a41-4002-4977-8e48-4b49b90bd764.jpeg)
 
 - buat roles directory untuk menampung skript yang akan diinstall
 
