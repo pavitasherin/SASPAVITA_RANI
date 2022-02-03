@@ -7,6 +7,102 @@
   <p align="center">
         	<img src= "UAS/1.jpeg">
   </p>
+  <p align="center">
+        	<img src= "UAS/2.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/3.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/4.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/5.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/6.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/7.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/8.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/9.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/10.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/11.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/12.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/13.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/14.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/15.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/16.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/17.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/18.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/19.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/20.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/21.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/22.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/23.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/24.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/25.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/26.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/27.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/28.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/29.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/30.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/31.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/32.jpeg">
+  </p>
+  <p align="center">
+        	<img src= "UAS/33.jpeg">
+  </p>
 - atur IP statis dan install server ssh di setiap lxc
 
 - `sudo nano /etc/hosts`
