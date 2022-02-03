@@ -1,8 +1,9 @@
 ## UAS 
-
+- Pavita Sherintama Giantoro (1202190051)
+- Rani Kusumawati (1202192029)
 ---
 
-- buat ubuntu baru dan konfigurasi IP nya. buat 6 lxc 
+- Buat ubuntu baru dan konfigurasi IP nya. buat 6 lxc 
 
 - atur IP statis dan install server ssh di setiap lxc
 
