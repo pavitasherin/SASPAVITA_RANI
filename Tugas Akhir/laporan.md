@@ -29,9 +29,6 @@
         	<img src= "UAS/7.jpeg">
   </p>
   <p align="center">
-        	<img src= "UAS/8.jpeg">
-  </p>
-  <p align="center">
         	<img src= "UAS/9.jpeg">
   </p>
   <p align="center">
