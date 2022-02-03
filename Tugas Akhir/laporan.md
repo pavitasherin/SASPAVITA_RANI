@@ -4,7 +4,9 @@
 ---
 
 - Buat ubuntu baru dan konfigurasi IP nya. buat 6 lxc 
-https://github.com/pavitasherin/SASPAVITA_RANI/blob/main/Tugas%20Akhir/UAS/1.jpeg
+  <p align="center">
+        	<img src= "UAS/1.jpeg">
+  </p>
 - atur IP statis dan install server ssh di setiap lxc
 
 - `sudo nano /etc/hosts`
