@@ -18,7 +18,7 @@
   <p align="center">
         	<img src= "UAS/4.jpeg">
   </p>
-- Buat beberapa file dibawah ini
+- Buat beberapa file pada folder ~/ansible/tubes
   <p align="center">
         	<img src= "UAS/5.jpeg">
   </p>
@@ -31,6 +31,7 @@
   <p align="center">
         	<img src= "UAS/9.jpeg">
   </p>
+- r
   <p align="center">
         	<img src= "UAS/10.jpeg">
   </p>
