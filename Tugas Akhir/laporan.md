@@ -117,8 +117,21 @@
   <p align="center">
         	<img src= "UAS/32.jpeg">
   </p>
-
-
-- cek konfigurasi pada web https://kelompok3.fpsas
+- Cek konfigurasi pada web https://kelompok3.fpsas
+  <p align="center">
+        	<img src= "UAS/34.jpeg">
+  </p>
+- Cek konfigurasi pada web https://kelompok3.fpsas/app
+  <p align="center">
+        	<img src= "UAS/35.jpeg">
+  </p>
+- Cek konfigurasi pada web https://kelompok3.fpsas/product
+  <p align="center">
+        	<img src= "UAS/36.jpeg">
+  </p>
+- Cek konfigurasi pada web https://news.kelompok3.fpsas
+  <p align="center">
+        	<img src= "UAS/37.jpeg">
+  </p>
 
 ---
